@@ -13,7 +13,7 @@
 3.  Plot the results.
 4.  Summary statistics for precipitation data.
 
-### Precipitation Analysis
+### Station Analysis
 1. Design a query to calculate the total number of stations.
 2. Design a query to find the most active stations.
   * List the stations and observation counts in descending order.
