@@ -11,7 +11,7 @@
 1.  Design a query to retrieve the last 12 months of precipitation data.
 2.  Data display of  `date` and `prcp` values in Panda.
 3.  Plot the results.
-4.  Summary statistics for the precipitation data.
+4.  Summary statistics for precipitation data.
 
 ### Precipitation Analysis
 1. Design a query to calculate the total number of stations.
