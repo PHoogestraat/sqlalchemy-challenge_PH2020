@@ -1,5 +1,5 @@
 # SQLAlchemy Homework - Surfs Up!
-
+![surf.png](Images/surf.png)
 ## Overview
 ## Step 1 - Climate App
 ### Get the Data
@@ -37,6 +37,3 @@
     
     E) Search temprature data by date range.
     
-
-![surf.png](Images/surf.png)
-
