@@ -26,11 +26,17 @@
 1. Use FLASK to develop climate APP (API)
 2. Create landing page
 3. Create query that returns data in JSON format
+
     A. Precipitation for last year.
+    
     B. List of Stations. 
+    
     C. Temprature data.
+    
     D. Search temprature data by date.
+    
     E. Search temprature data by date range.
+    
 
 ![surfs-up.png](Images/surfs-up.png)
 
