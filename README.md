@@ -38,5 +38,5 @@
     E) Search temprature data by date range.
     
 
-![surfs-up.png](Images/surfs-up.png)
+![surf.png](Images/surf.png)
 
