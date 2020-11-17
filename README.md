@@ -28,9 +28,13 @@
 3. Create query that returns data in JSON format
 
     A. Precipitation for last year.
-    B. List of Stations. 
+    
+    B. List of Stations.
+    
     C. Temprature data.
-    D. Search temprature data by date.
+    
+    D. Search temprature data by date
+    .
     E.Search temprature data by date range.
     
 
