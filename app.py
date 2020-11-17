@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import datetime as dt
 from flask import Flask, jsonify
-
+import string
 
 #################################################
 # Database Setup
@@ -75,11 +75,28 @@ def temp():
     # Query for last day and first day on new data set
     query_date = dt.date(2017, 8, 23) - dt.timedelta(days=365)
 
+    # Query most acitve station
+    # Calculates the stats for the most active station Stats Using query
+    dat = [MEASUR.station,
+        func.count(MEASUR.tobs),
+        func.max(MEASUR.tobs),
+        func.min(MEASUR.tobs),
+        func.avg(MEASUR.tobs)] 
+
+    most_active_station = session.query(*dat).\
+        group_by(MEASUR.station).\
+        order_by(func.count(MEASUR.tobs).desc()).first()
+
+    # REDUECE data to single station
+    temp_a = str(most_active_station).split(' ').pop(0)
+    active_station = temp_a.translate(str.maketrans('', '', string.punctuation))
+    
+    
     temp_dat = [MEASUR.station, MEASUR.tobs,MEASUR.date]
 
     temp_data = session.query(*temp_dat).\
         filter(MEASUR.date > query_date).\
-        filter(MEASUR.station =='USC00519397').all()
+        filter(MEASUR.station == active_station).all()
     
     session.close()
     return jsonify(temp_data)
@@ -135,22 +152,33 @@ def dates(start, end):
 @app.route("/")
 def welcome():
     return (
-        f"****************************************************************************"
-        f"<h1>     Welcome to the Cliamte App Home Page</h1>"
-        f"****************************************************************************"
-        f"<h3>Available Routes:<br/></h3>"
+        f"<h1>     Welcome to the Climate App Home Page</h1>"
+        f"****************************************************************************<br/>"
+        f"<h2><u>Available Routes:<br/></u></h2>"
+        f"<h3>Provides Precipitaton Data for last year available in data set.</h3> "
+        f"<u>Path:<br/></u>"
         f"/api/v1.0/precipitation"
         f"<br/>"
         f"<br/>"
+        f"<h3>Provides station data (ID#, Name-address, elavation).</h3> "
+        f"<u>Path:<br/></u>"
         f"/api/v1.0/stations"
         f"<br/>"
         f"<br/>"
+        f"<h3>Provides date and temprature data for most active weather station.</h3> "
+        f"<u>Path:<br/></u>"
         f"/api/v1.0/tobs"
         f"<br/>"
         f"<br/>"
+        f"<h3>Enter date for historic temprature statistics.<br/> "
+        f"Query format example: /api/v1.0/2016-08-23</h3> "
+        f"<u>Path:<br/></u>"
         f"/api/v1.0/<start>" 
         f"<br/>"
         f"<br/>"
+        f"<h3>Enter date range for historic temprature statistics.<br/> "
+        f"Query format example:/api/v1.0/2016-08-23/2016-09-23</h3> "
+        f"<u>Path:<br/></u>"
         f"/api/v1.0/<start>/<end>" 
     )
 
