@@ -1,7 +1,7 @@
 # SQLAlchemy Homework - Surfs Up!
 ![surf.png](Images/surf.png)
 ## Overview
-## Step 1 - Climate App
+## Step 1 - Climate Analysis and Exploration
 ### Get the Data
 1. Import Dependencies
 2. Reflect Tables into SQL Alchemy ORM
