@@ -1,4 +1,4 @@
-# SQLAlchemy Homework - Surfs Up!
+# SQL Alchemy Homework - Surfs Up!
 ![surf.png](Images/surf.png)
 ## Overview
 ## Step 1 - Climate Analysis and Exploration
